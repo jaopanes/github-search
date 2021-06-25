@@ -47,29 +47,24 @@
       </aside>
 
       <section>
-        <article
-          class="repository"
-          v-for="repository in responseUser.repositorys"
+        <Repository
+          v-for="repository in orderRepositorys(responseUser.repositorys)"
           :key="repository.created_at"
-        >
-          <h2 class="name-repository">{{ repository.name }}</h2>
-          <p class="description-repository">
-            {{ repository.description }}
-          </p>
-          <p class="stars-repository">
-            <img src="../assets/icons/star.svg" />
-            {{ repository.stargazers_count }}
-          </p>
-        </article>
+          :data="repository"
+        />
       </section>
     </main>
   </div>
 </template>
 <script>
+import Repository from "../components/Repository";
 import axios from "axios";
 
 export default {
   name: "Read",
+  components: {
+    Repository,
+  },
   data() {
     return {
       username: this.$route.params.user,
@@ -99,6 +94,16 @@ export default {
   },
 
   methods: {
+    orderRepositorys: function (array) {
+      array.sort(function (a, b) {
+        if (a.stargazers_count < b.stargazers_count) return 1;
+        if (a.stargazers_count > b.stargazers_count) return -1;
+        return 0;
+      });
+
+      return array;
+    },
+
     search: async function (username) {
       axios
         .all([
@@ -195,40 +200,6 @@ aside .infos p:last-child {
 }
 
 aside .infos p img {
-  margin-right: 10px;
-}
-
-section .repository {
-  float: left;
-  width: 100%;
-  margin-bottom: 36px;
-}
-
-section .repository:last-child {
-  margin-bottom: 0;
-}
-
-section .repository .name-repository {
-  font-weight: 300;
-  font-size: 36px;
-}
-
-section .repository .description-repository {
-  font-weight: 300;
-  font-size: 24px;
-  color: #757575;
-}
-
-section .repository .stars-repository {
-  margin-top: 7px;
-  font-weight: 300;
-  font-size: 20px;
-  color: #757575;
-  display: flex;
-  align-items: center;
-}
-
-section .repository .stars-repository img {
   margin-right: 10px;
 }
 
