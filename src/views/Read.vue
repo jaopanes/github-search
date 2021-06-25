@@ -112,7 +112,7 @@ export default {
             this.responseUser.starred = resStars.data.length;
             this.responseUser.repositorys = resRepositorys.data;
           }),
-
+          (this.showError = false),
           this.$router.push({
             path: `/resultado/${username}`,
           })
@@ -235,6 +235,5 @@ section .repository .stars-repository img {
 .error {
   position: absolute;
   margin-top: -30px;
-
 }
 </style>
