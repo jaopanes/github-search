@@ -1,24 +1,26 @@
-# github-search
+# Github Search
 
-## Project setup
+Github user survey application, made for a selective process.
+
+- [X] API consumption
+- [X] Search system
+- [X] Route system
+- [X] Dynamic routes
+
+## API 
+
+To develop the application, <b>Github</b> external API was used.
+[Documentation](https://developer.github.com/v3/)
+
+## Instalação
+
+Copy the repository and run the command on your terminal:
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+then run the command to bring up the development server:
 ```
 yarn serve
 ```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+(You must have Nodejs)
