@@ -12,7 +12,7 @@ Github user survey application, made for a selective process.
 To develop the application, <b>Github</b> external API was used.
 [Documentation](https://developer.github.com/v3/)
 
-## Instalação
+## Installation
 
 Copy the repository and run the command on your terminal:
 ```
